@@ -19,6 +19,11 @@ parameters {
     choices: ['CSE', 'IT', 'MECH', 'CIVIL'],
     description: 'enter student department name'
    )
+	booleanParam(
+		name: 'is_passed',
+		defaultValue : false,
+		description : 'Are you Passed in End Semester Exam'
+   )
 }
 
 stages {
@@ -31,6 +36,10 @@ stages {
 			echo "Student Name : ${params.stud_name}"
 			echo "Student city : ${params.stud_city}"
 			echo "Student Department : ${params.stud_dept}"
+			
+			echo "is Student passed : ${params.is_passed'}"
+
+			echo "=========================================="
                     }
              }
     }
