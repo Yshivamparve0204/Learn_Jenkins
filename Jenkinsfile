@@ -37,7 +37,7 @@ stages {
 			echo "Student city : ${params.stud_city}"
 			echo "Student Department : ${params.stud_dept}"
 			
-			echo "is Student passed : ${params.is_passed'}"
+			echo "is Student passed : ${params.is_passed}"
 
 			echo "=========================================="
                     }
