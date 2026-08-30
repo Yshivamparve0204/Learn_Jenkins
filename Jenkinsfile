@@ -1,6 +1,5 @@
 pipeline{
-agent ubuntu
-
+agent { label 'ubuntu' }
 parameters {
  string( 
    name: 'roll_no',
