@@ -1,0 +1,124 @@
+```groovy
+pipeline {
+
+    agent {
+        label 'linux'
+    }
+
+    parameters {
+
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['DEV', 'TEST', 'PROD'],
+            description: 'Select the environment'
+        )
+
+        choice(
+            name: 'BUILD_TYPE',
+            choices: ['FULL', 'QUICK'],
+            description: 'Select build type'
+        )
+
+        booleanParam(
+            name: 'RUN_TESTS',
+            defaultValue: true,
+            description: 'Run test cases?'
+        )
+
+        string(
+            name: 'APP_VERSION',
+            defaultValue: '1.0.0',
+            description: 'Enter application version'
+        )
+    }
+
+    stages {
+
+        stage('Environment Information') {
+            steps {
+                echo "================================="
+                echo "Environment : ${params.ENVIRONMENT}"
+                echo "Build Type  : ${params.BUILD_TYPE}"
+                echo "Run Tests   : ${params.RUN_TESTS}"
+                echo "Version     : ${params.APP_VERSION}"
+                echo "================================="
+            }
+        }
+
+        stage('Checkout') {
+            steps {
+                echo "Git repository has already been checked out by Jenkins."
+                sh 'git status'
+                sh 'git branch'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Starting ${params.BUILD_TYPE} build..."
+
+                sh '''
+                    echo "Building application..."
+                    mkdir -p build
+                    echo "Application Version: ${APP_VERSION}" > build/version.txt
+                    cat build/version.txt
+                '''
+            }
+        }
+
+        stage('Test') {
+            when {
+                expression {
+                    return params.RUN_TESTS
+                }
+            }
+
+            steps {
+                echo "Running test cases..."
+
+                sh '''
+                    echo "Test 1: PASS"
+                    echo "Test 2: PASS"
+                    echo "Test 3: PASS"
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                expression {
+                    return params.ENVIRONMENT != 'DEV'
+                }
+            }
+
+            steps {
+                echo "Deploying application..."
+                echo "Environment: ${params.ENVIRONMENT}"
+
+                sh '''
+                    echo "Deployment completed successfully."
+                '''
+            }
+        }
+    }
+
+    post {
+
+        success {
+            echo "================================="
+            echo "PIPELINE SUCCESSFUL"
+            echo "================================="
+        }
+
+        failure {
+            echo "================================="
+            echo "PIPELINE FAILED"
+            echo "================================="
+        }
+
+        always {
+            echo "Pipeline execution completed."
+        }
+    }
+}
+```
