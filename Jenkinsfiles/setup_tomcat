@@ -1,0 +1,36 @@
+pipeline {
+    options { buildDiscarder(logRotator(numToKeepStr: '60')) }
+    agent { label 'ubuntu' }
+
+    stages {
+        stage('CheckOutGit') {
+            steps {
+                checkout([$class: 'GitSCM',
+                    branches: [[name: 'master']],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[credentialsId: 'shivam_git',
+                        url: 'https://github.com/Yshivamparve0204/Learn_Jenkins.git']]
+                ])
+            }
+        }
+/*
+        stage('WMOS_Cert_Update') {
+            steps {
+                dir('ansible') {
+                    wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
+                        script {
+                            sh "echo RDC is ${params.RDC}"
+                            sh "echo Environment is ${params.Environment}"
+                            sh "echo Venafi_cert is ${params.Venafi_cert}"
+                            sh "sh scripts/update_wmos_cert_010626.sh ${params.Venafi_cert} ${params.RDC} ${params.Environment} ${params.user}"
+                            // sh "sh scripts/update_wmos_cert.sh ${params.Venafi_cert} ${params.RDC} ${params.Environment} ${params.user}"
+                        }
+                    }
+                }
+            }
+        } */
+
+    }
+}
