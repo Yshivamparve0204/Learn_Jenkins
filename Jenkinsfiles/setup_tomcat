@@ -25,7 +25,9 @@ pipeline {
                             sh "echo Environment is ${params.Environment}"
                             sh "echo Tomcat_Version is ${params.Tomcat_Version}"
                             sh "echo User is ${params.User}"
-                            sh "sh scripts/getIP.sh ${params.Tomcat_Version} ${params.RDC} ${params.Environment} ${params.User}"
+                            //sh "sh scripts/getIP.sh ${params.Tomcat_Version} ${params.RDC} ${params.Environment} ${params.User}"
+                            sh "export ANSIBLE_FORCE_COLOR=true;ansible-playbook getIP.yml"
+
                         }
                   //  }
                 }
