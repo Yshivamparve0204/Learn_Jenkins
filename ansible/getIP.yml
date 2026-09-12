@@ -1,0 +1,14 @@
+---
+- name: Execute local script on server
+  hosts: localhost
+  #become: yes
+
+  tasks:
+    - name: Execute bash script
+      ansible.builtin.shell:
+        cmd: bash /home/shivam/scripts/getIP.sh
+      register: output
+
+    - debug:
+        msg: "{{ output.stdout }}"
+
