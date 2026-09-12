@@ -1,13 +1,13 @@
 ---
 - name: Execute local script on server
   hosts: localhost
-  #become: yes
+  # become: yes
 
   tasks:
     - name: Execute bash script
-      ansible.builtin.scripts: getIP.sh
+      ansible.builtin.script: getIP.sh
       register: output
 
-    - debug:
+    - name: Display output
+      ansible.builtin.debug:
         msg: "{{ output.stdout }}"
-
