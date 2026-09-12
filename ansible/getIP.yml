@@ -5,8 +5,6 @@
 
   tasks:
     - name: Execute bash script
-      #ansible.builtin.shell:
-      #  cmd: bash /home/shivam/scripts/getIP.sh
       ansible.builtin.scripts: getIP.sh
       register: output
 
