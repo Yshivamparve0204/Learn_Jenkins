@@ -25,8 +25,7 @@ pipeline {
                             sh "echo Environment is ${params.Environment}"
                             sh "echo Tomcat_Version is ${params.Tomcat_Version}"
                             sh "echo User is ${params.User}"
-                            //sh "sh scripts/update_wmos_cert_010626.sh ${params.Venafi_cert} ${params.RDC} ${params.Environment} ${params.user}"
-                            // sh "sh scripts/update_wmos_cert.sh ${params.Venafi_cert} ${params.RDC} ${params.Environment} ${params.user}"
+                            sh "sh scripts/getIP.sh ${params.Tomcat_Version} ${params.RDC} ${params.Environment} ${params.User}"
                         }
                   //  }
                 }
