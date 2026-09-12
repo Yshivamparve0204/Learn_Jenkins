@@ -16,15 +16,16 @@ pipeline {
             }
         }
 /*
-        stage('WMOS_Cert_Update') {
+        stage('Install_tomcat') {
             steps {
                 dir('ansible') {
                     wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
                         script {
                             sh "echo RDC is ${params.RDC}"
                             sh "echo Environment is ${params.Environment}"
-                            sh "echo Venafi_cert is ${params.Venafi_cert}"
-                            sh "sh scripts/update_wmos_cert_010626.sh ${params.Venafi_cert} ${params.RDC} ${params.Environment} ${params.user}"
+                            sh "echo Tomcat_Version is ${params.Tomcat_Version}"
+                            sh "echo User is ${params.User}"
+                            //sh "sh scripts/update_wmos_cert_010626.sh ${params.Venafi_cert} ${params.RDC} ${params.Environment} ${params.user}"
                             // sh "sh scripts/update_wmos_cert.sh ${params.Venafi_cert} ${params.RDC} ${params.Environment} ${params.user}"
                         }
                     }
