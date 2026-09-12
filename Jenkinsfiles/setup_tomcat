@@ -1,6 +1,6 @@
 pipeline {
     options { buildDiscarder(logRotator(numToKeepStr: '60')) }
-    agent { label 'ubuntu' }
+    agent { label 'linux' }
 
     stages {
         stage('CheckOutGit') {
