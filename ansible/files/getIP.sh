@@ -5,3 +5,4 @@ hostName=`hostname`
 echo $hostName - $serverIP
 cd software/tomcat10/bin/
 sh startup.sh
+echo "tomcat started"
