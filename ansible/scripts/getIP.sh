@@ -3,6 +3,7 @@ echo $1-$2-$3-$4
 serverIP=`hostname -I`
 hostName=`hostname`
 echo $hostName - $serverIP
-cd software/tomcat10/bin/
+echo "tomcat is starting..."
+cd /home/shivam/software/tomcat-10/bin
 sh startup.sh
 echo "tomcat started"
