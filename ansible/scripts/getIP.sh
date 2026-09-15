@@ -7,4 +7,13 @@ echo "tomcat is starting..."
 cd /home/shivam/software/tomcat-10/bin
 sh startup.sh
 echo "tomcat started"
-curl http:// 192.168.56.1:8080
+sleep 5
+
+if ss -lnt | grep -q ":8080 "; then
+    echo "Tomcat started successfully"
+    echo "Opening Tomcat Home Page..."
+    xdg-open "http://localhost:8080"
+else
+    echo "Tomcat failed to start"
+    exit 1
+fi
