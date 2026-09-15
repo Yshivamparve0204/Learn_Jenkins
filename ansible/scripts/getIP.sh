@@ -7,4 +7,4 @@ echo "tomcat is starting..."
 cd /home/shivam/software/tomcat-10/bin
 sh startup.sh
 echo "tomcat started"
-curl http://localhost:8080
+curl http:// 192.168.56.1:8080
