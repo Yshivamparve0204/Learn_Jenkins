@@ -7,7 +7,7 @@
   tasks:
    - name: "check Directory"
      stat:
-      path: "/apps/scope/SDN/{{ sdn_version }}"
+      path: "/opt/SDN/{{ sdn_version }}"
       register: sdn_folder
 
    - name: "echo if directory already existed"
