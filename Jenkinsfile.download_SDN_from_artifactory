@@ -9,7 +9,7 @@ steps {
   I checkout([$class: 'GitSCM',branches: [[name: 'release']],
 doGenerateSubmoduleConfigurations: false,extensions: [],submoduleCfg: [],userRemoteConfigs: [[credentialsId: 'svcsscns_github_token'
       }
-url: 'org-2033@github.wsgc.com: Logistics-WMOS/sdnfixpack.git']]])
+url: 'https://github.com/Yshivamparve0204/Learn_Jenkins.git']]])
 
 stage('SDNfixpack Automation'){
 steps {
