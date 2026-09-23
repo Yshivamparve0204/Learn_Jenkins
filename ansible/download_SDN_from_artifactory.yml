@@ -15,7 +15,7 @@
       msg: "the  /apps/scope/SDN/{{ sdn_version }} directory is already existed
       when: sdn_folder.stat.exists
 
-    - name: create directory is not exists
+    - name: create directory if not exists
       file:
         path: "/apps/scope/SDN/{{ sdn_version }}"
         state: directory
