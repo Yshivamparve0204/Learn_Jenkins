@@ -29,7 +29,7 @@
 
      - name: download artifacts
        uri:
-         url: "https://snapshotrepo.wsgc.com/artifactory/gradle-release-local/com/wsgc/SDNs/{{ sdn_version }}/"
+         url: 
          method: GET
          return content: yes
          validate_certs: false
@@ -41,7 +41,7 @@
 
       - name: download files
         uri:
-          url: "https://snapshotrepo.wsgc.com/artifactory/gradle-release-local/com/wsgc/SDNs/{{ sdn_version }}/{{ item }}"
+          url:
           dest: "/apps/scope/SDN/{{ sdn_version }}/{{ item }}"
           method: GET
           validate_certs: false
