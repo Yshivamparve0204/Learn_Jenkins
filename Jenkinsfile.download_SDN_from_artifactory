@@ -1,6 +1,6 @@
 pipeline {
     options { buildDiscarder(logRotator(numToKeepStr: '60')) }
-    agent { label 'linux' }
+    agent { label 'ubuntu' }
 
     stages {
         stage('CheckOutGit') {
@@ -24,8 +24,8 @@ pipeline {
                             for(String SDN: SDNs){
                                 sh "pwd"
                                 sh "export ANSIBLE_FORCE_COLOR=true; ansible-playbook |
-                                download_SDN_from_artifactory.yml --user=svcswmosnpd --extra-vars sdn_version=${SDN}
-                                -extra-vars is_this_0B2=${params.OB2_or_PH1} -extra-vars workspace=${WORKSPACE}"
+                                download_SDN_from_artifactory.yml --user=svcswmosnpd --extra-vars sdn_version=${SDN}"
+                               // -extra-vars is_this_0B2=${params.OB2_or_PH1} -extra-vars workspace=${WORKSPACE}"
                               }
 
                         }
